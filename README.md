@@ -35,18 +35,26 @@ All scenarios, risks, owners, control descriptions, and examples are fictional.
 
 ---
 
-## Repository contents
+## Current repository contents
 
 | Artefact | Purpose |
 |---|---|
-| `governance_summary_agentic_sdlc.md` | One-page governance summary for senior stakeholders |
+| `README.md` | Project overview, rationale, second-line risk framing and planned development path |
+| `governance_summary_agentic_sdlc.md` | One-page information risk governance summary for senior stakeholders |
+
+Version 1 focuses on the governance summary as the core artefact. Additional artefacts will be added iteratively.
+
+---
+
+## Planned additions
+
+| Planned artefact | Purpose |
+|---|---|
 | `risk_register_agentic_sdlc.xlsx` | Information security risk register for the agentic SDLC scenario |
 | `control_ownership_matrix.xlsx` | Control ownership and status matrix |
 | `corrective_action_tracker.xlsx` | Corrective action tracker with owners, due dates, and escalation triggers |
 | `synthetic_jira_tickets.csv` | Fictional Jira-style tickets used to illustrate risk classification |
 | `risk_classifier.py` | Optional lightweight script to classify synthetic changes against simple risk criteria |
-
-Version 1 focuses on the governance summary. Further artefacts may be added iteratively.
 
 ---
 
@@ -172,7 +180,7 @@ AI-generated reasoning should not be treated as sufficient evidence on its own. 
 
 ---
 
-## Research inspiration
+## Research note: structured classification rationale
 
 The structured rationale approach is partly informed by:
 
@@ -209,6 +217,7 @@ The focus is therefore not on writing production-grade code. The focus is on tra
 Version 1 includes:
 
 - governance summary;
+- scenario overview;
 - top risks;
 - risk appetite position;
 - required actions;
