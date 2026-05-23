@@ -1,251 +1,126 @@
 # Agentic SDLC Information Risk Pack
 
-A synthetic second-line information security risk pack for AI-agent-led software delivery processes.
-
-This repository explores how a Business Information Risk Analyst, Technology Risk Manager, or CISO-aligned risk function could assess an SDLC process where AI agents generate, review, classify, and route software changes with reduced human involvement.
-
-The project is intentionally framed from a **second-line information security risk perspective**, not as an audit workpaper. The focus is on business impact, risk appetite, control ownership, corrective actions, and governance visibility.
+A synthetic second-line information security risk pack for AI-agent-led 
+software delivery processes.
 
 ---
 
 ## Purpose
 
-AI-enabled SDLC processes are moving from simple developer assistance toward agentic workflows where AI may:
+This project demonstrates how a second-line information security risk function 
+could assess, govern and report on an AI-agent-led software development lifecycle 
+(SDLC). It is not an audit project. The focus is on risk ownership, business 
+impact, risk appetite, corrective action tracking and governance visibility — not 
+control testing or audit evidence.
 
-- interpret Jira tickets;
-- generate code changes;
-- perform security, compliance, or architecture review loops;
-- create or support pull requests in GitHub;
-- classify changes as low, medium, or high risk;
-- route low-risk changes toward deployment with limited human review.
-
-This changes the risk profile of the SDLC. Traditional human control points may be reduced, moved, or replaced, and new risk points emerge around Jira ticket quality, AI classification criteria, segregation of duties, prompt governance, model version updates, rollback monitoring, and governance reporting.
-
-This repository demonstrates how those risks could be captured in a practical information risk pack.
-
----
-
-## Disclaimer
-
-This is a synthetic case study inspired by publicly available industry discussion on AI-agent-led software delivery and emerging AI governance themes.
-
-It does **not** reference, reproduce, or derive from any client engagement, proprietary methodology, confidential documentation, internal organisational material, or real control environment.
-
-All scenarios, risks, owners, control descriptions, and examples are fictional.
-
----
-
-## Current repository contents
-
-| Artefact | Purpose |
-|---|---|
-| `README.md` | Project overview, rationale, second-line risk framing and planned development path |
-| `governance_summary_agentic_sdlc.md` | One-page information risk governance summary for senior stakeholders |
-
-Version 1 focuses on the governance summary as the core artefact. Additional artefacts will be added iteratively.
-
----
-
-## Planned additions
-
-| Planned artefact | Purpose |
-|---|---|
-| `risk_register_agentic_sdlc.xlsx` | Information security risk register for the agentic SDLC scenario |
-| `control_ownership_matrix.xlsx` | Control ownership and status matrix |
-| `corrective_action_tracker.xlsx` | Corrective action tracker with owners, due dates, and escalation triggers |
-| `synthetic_jira_tickets.csv` | Fictional Jira-style tickets used to illustrate risk classification |
-| `risk_classifier.py` | Optional lightweight script to classify synthetic changes against simple risk criteria |
+The scenario is synthetic. It does not reference, reproduce or derive from any 
+client engagement, proprietary methodology or internal organisational material. 
+All data, scenarios and examples are fictional and inspired by publicly available 
+industry discussion on agentic AI in software delivery.
 
 ---
 
 ## Scenario
 
-The process is triggered when a user raises a Jira ticket requesting a software change. A development AI agent interprets the ticket, generates the change, and performs internal AI-led review loops across areas such as security, compliance, and architecture before creating a pull request in GitHub.
+In a traditional SDLC, a human engineer interprets a change request, writes 
+code, and submits it for peer review and approval before deployment. In an 
+agentic SDLC, that flow changes materially: a Jira ticket triggers a development 
+AI agent, which generates the change and performs internal review loops. A 
+separate review AI agent then classifies the change as low risk or not low risk. 
+Low-risk changes proceed to production without human review. Human involvement 
+is only reintroduced where the AI agent determines it is required.
 
-A separate review AI agent then assesses the Jira ticket and code change against defined prompts and criteria to determine whether the change is low risk or requires manual review. Where the change is classified as low risk, the change proceeds to production without human review; where it is not low risk, it is routed to a manual review queue.
-
-As a result, human involvement is only reintroduced where the AI review agent determines the change is not low risk — meaning the threshold for human oversight is itself AI-determined.
-
----
-
-## Core risk judgement
-
-The central risk judgement is:
-
-> Automation itself is not outside appetite. AI-determined deployment without proportionate independent challenge is outside appetite where business impact could be material.
-
-This distinction matters. The purpose of this risk pack is not to block AI-enabled SDLC automation, but to define where risk ownership, human review, escalation, and corrective action are required.
+This shift changes the control boundary. The key risks are no longer only about 
+developer access to production. They are about who controls the inputs, 
+classification criteria, prompts, model versions and approval routes that govern 
+how AI agents behave.
 
 ---
 
-## Top information security risks
+## Contents
 
-### 1. Low-risk misclassification
+| File | Description |
+|------|-------------|
+| `governance_summary_agentic_sdlc.md` | One-page second-line risk governance summary covering scenario, risk appetite, top risks, required actions and escalation triggers |
 
-The AI review agent may classify a production-impacting, security-sensitive, or business-critical change as low risk, allowing it to proceed to production without human review.
+### Planned additions
 
-This could result in unauthorised, insecure, or incorrectly designed code being deployed into a live environment, affecting system integrity, service availability, financial reporting, customer outcomes, or regulatory compliance.
-
-### 2. Segregation of duties bypass
-
-A user may raise a Jira ticket, have the development AI agent generate the change, and then approve the related GitHub change if access rules do not prevent requester/approver overlap.
-
-This creates an end-to-end path for unauthorised or malicious change without independent human challenge, increasing insider threat and change governance risk.
-
-### 3. Prompt and model governance failure
-
-Development or review agent prompts, guardrails, low-risk classification criteria, or model versions may be changed without formal approval, testing, monitoring, or rollback planning.
-
-This could cause the AI agents to behave differently from their approved design, meaning governance bodies can no longer rely on AI classification as a control and the approval mechanism itself becomes unreliable.
+| File | Description |
+|------|-------------|
+| `risk_register_agentic_sdlc.xlsx` | Risk register with likelihood/impact ratings, appetite position, treatment decisions and corrective action owners |
+| `control_ownership_matrix.xlsx` | Control library mapped to owners, operators, frequency and current status |
+| `corrective_action_tracker.xlsx` | Tracker for open issues with target dates, owners and escalation triggers |
+| `risk_classifier.py` | Lightweight Python script that reads synthetic Jira ticket data and outputs risk rating, appetite position, triggered criteria and treatment decision |
 
 ---
 
-## Key second-line questions
+## How a BIRA would use this
 
-This project is built around the following risk questions:
+A Business Information Risk Analyst approaching an agentic SDLC environment 
+would not start with the technology. They would start with the process — mapping 
+where AI receives inputs, makes decisions and triggers actions — then ask whether 
+those decisions are owned, governed, monitored and within risk appetite.
 
-- What business process is the AI influencing or executing?
-- What inputs does the AI rely on?
-- What decisions does the AI make?
-- What actions can the AI trigger?
-- Who owns the risk if the AI makes a poor decision?
-- What is the business impact if the AI classification is wrong?
-- Is the residual risk within appetite?
-- Which controls are preventive, detective, or corrective?
-- Which risks require governance escalation?
-- How are corrective actions tracked to completion?
+This pack is structured around that approach:
 
----
-
-## Required control themes
-
-The risk pack focuses on six control themes:
-
-### 1. Low-risk classification criteria
-
-Clear, approved criteria for determining whether a change is genuinely low risk.
-
-### 2. Jira ticket quality gate
-
-Mandatory minimum information before AI development can begin.
-
-### 3. Segregation of duties
-
-Separation between requester, approver, deployer, exception approver, and owners of classification logic.
-
-### 4. Prompt and model governance
-
-Formal change control over prompts, guardrails, model versions, and classification criteria.
-
-### 5. Human review floor
-
-Mandatory human review for defined high-impact change categories, regardless of AI classification.
-
-### 6. Rollback and corrective action monitoring
-
-Root cause review and corrective action tracking where AI-generated or AI-approved changes fail.
+- **Governance summary** — frames the risk position for senior stakeholders
+- **Risk register** — identifies, rates and assigns ownership to key risks
+- **Control ownership matrix** — confirms who operates each control and its status
+- **Corrective action tracker** — tracks what needs to change and by when
+- **Risk classifier** — demonstrates how classification logic could be automated 
+and made auditable
 
 ---
 
-## Structured classification rationale
+## Key risk positions
 
-This project uses the concept of a **structured classification rationale** rather than free-form AI reasoning.
+**Automation is not outside appetite by default.** The risk position is not that 
+AI should not approve changes. It is that AI-determined deployment for 
+production-impacting or business-critical changes is outside appetite without 
+proportionate independent challenge, formally owned classification criteria, SoD 
+enforcement and rollback monitoring.
 
-In practice, this means a risk classification should be supported by defined criteria, source fields, and decision outputs, for example:
+**The threshold for human oversight is itself AI-determined.** In this process, 
+whether a human reviews a change depends on whether the AI review agent classifies 
+it as low risk. That makes the classification criteria, prompt governance and model 
+version control first-order risk management issues, not just technical configuration.
 
-```json
-{
-  "ticket_id": "JIRA-1042",
-  "risk_rating": "High",
-  "risk_appetite_position": "Outside appetite",
-  "criteria_triggered": [
-    "Production-impacting change",
-    "Payments-related system",
-    "Requester and approver are the same individual"
-  ],
-  "treatment_decision": "Reduce",
-  "recommended_action": "Require independent human approval before deployment"
-}
-```
-
-The purpose is to make the classification:
-
-- evidence-backed;
-- consistent;
-- challengeable;
-- governance-ready;
-- easier to validate than a long narrative explanation.
-
-AI-generated reasoning should not be treated as sufficient evidence on its own. It should be treated as a decision-support artefact that must be supported by approved criteria, source data, ownership, monitoring, and escalation.
+**SoD changes shape, not relevance.** Traditional SoD separates developer from 
+deployer. In an agentic SDLC, the separation must cover Jira requester, GitHub 
+approver, deployment approver, prompt/model owner and exception approver. AI does 
+not remove the need for SoD — it changes where the boundaries must sit.
 
 ---
 
-## Research note: structured classification rationale
+## Approach to AI reasoning
 
-The structured rationale approach is partly informed by:
+Where AI classification rationale is included in this project, it is treated as 
+decision-support — not audit evidence. Classification outputs are structured using 
+defined criteria, source data and validation checks rather than free-form model 
+reasoning.
 
-**Yin, H. et al. (2025). _Marco-o1 v2: Towards Widening The Distillation Bottleneck for Reasoning Models_. arXiv:2503.01461.**  
-https://arxiv.org/abs/2503.01461
+This approach is informed by research into structured AI reasoning, including 
+findings on tree-based chain-of-thought construction and the limitations of 
+extended reasoning chains as reliable decision evidence:
 
-The paper discusses tree-based chain-of-thought construction and the limitations of long reasoning chains, including risks of over-thinking and unreliable rationale.
-
-This project applies that lesson in a governance context by avoiding reliance on long free-form AI explanations and instead using structured criteria, decision nodes, and validation checks.
-
-This repository does not implement Marco-o1 v2 or reproduce the paper’s methodology. It only draws on the broader governance implication: reasoning outputs should be structured, bounded, and independently challengeable where they support risk decisions.
-
----
-
-## How this maps to a BIRA-style role
-
-A Business Information Risk Analyst is not only concerned with whether a control exists. The role requires understanding:
-
-- what the risk is;
-- who owns it;
-- whether it is within appetite;
-- what corrective action is required;
-- whether senior stakeholders need visibility;
-- whether the risk posture is improving or deteriorating.
-
-This repository is designed to demonstrate that mindset using an emerging technology scenario.
-
-The focus is therefore not on writing production-grade code. The focus is on translating a complex AI-enabled SDLC process into a clear risk management view that a CISO, Technology Risk Manager, or governance forum could act on.
-
----
-
-## Current status
-
-Version 1 includes:
-
-- governance summary;
-- scenario overview;
-- top risks;
-- risk appetite position;
-- required actions;
-- escalation triggers;
-- structured rationale approach.
-
-Planned future additions:
-
-- risk register;
-- control ownership matrix;
-- corrective action tracker;
-- synthetic Jira ticket examples;
-- lightweight risk classification script.
+> Yin, H. et al. (2025). *Marco-o1 v2: Towards Widening The Distillation 
+> Bottleneck for Reasoning Models*. arXiv:2503.01461.
 
 ---
 
 ## Limitations
 
-This is a conceptual and educational project.
-
-It does not connect to Jira, GitHub, GitHub Copilot, CI/CD tooling, LLM APIs, or production systems. It does not assess real code, real tickets, or real organisational controls.
-
-The examples are simplified to demonstrate second-line risk thinking and should not be treated as a complete control framework for AI-led SDLC.
+- All data is synthetic. No real organisations, clients or systems are referenced.
+- The risk classifier uses rules-based logic, not a live AI model.
+- This pack reflects one scenario. Risk appetite thresholds, control designs and 
+escalation routes would vary by organisation, sector and regulatory context.
+- Framework mappings (ISO 27001, NIST AI RMF, EU AI Act) are indicative only.
 
 ---
 
 ## Author
 
-Layla Bhatti  
-Digital Audit Associate | Technology Controls | Information Security Risk | AI Governance  
-GitHub: https://github.com/lbhatti-risk
+**Layla Bhatti** — github.com/lbhatti-risk
+
+Background in IT audit, ITGCs, AI governance and information security risk. 
+Building toward second-line risk roles in technology risk, GRC and AI governance.
